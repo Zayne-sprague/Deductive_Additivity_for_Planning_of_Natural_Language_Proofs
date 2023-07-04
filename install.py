@@ -21,6 +21,8 @@ files = {
     't5_3b_abductive_eb_only': {'id':     '4v1sldwgmx01lkkghphsx7beghbxckpr', 'name': 't5_3b_abductive_eb_only'},
     't5_3b_eb_only_all_step': {'id':      'l1urbhdb1vhuiyp5hspx8sgvsrdxkw0b', 'name': 't5_3b_eb_only_all_step'},
     'projected_gpt3_glu': {'id': 'sx6f72vuirfagch0zto64ms1rc8gjtgk', 'name': 'projected_gpt3_glu'},
+    'simcse_rbase': {'id': 'zuziowzc2z1on620efubz2sl21rid9qh', 'name': 'simcse_rbase'},
+    'raw_gpt3': {'id': 'tovb9lt6emahfa1dhgnj14pv58d8w86f', 'name': 'raw_gpt3'},
     'data': {'id': 'dwe4f376jakxx6mq03n2u8ue6q3vk70y', 'name': 'data', 'local_filename': '../data'}
 }
 

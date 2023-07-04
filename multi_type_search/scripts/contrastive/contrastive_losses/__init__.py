@@ -1,0 +1,4 @@
+from multi_type_search.scripts.contrastive.contrastive_losses.contrastive_loss import ContrastiveLoss
+from multi_type_search.scripts.contrastive.contrastive_losses.nxtent import NTXENTLoss
+from multi_type_search.scripts.contrastive.contrastive_losses.cosine_loss import CosineLoss
+from multi_type_search.scripts.contrastive.contrastive_losses.moco import MOCOLoss

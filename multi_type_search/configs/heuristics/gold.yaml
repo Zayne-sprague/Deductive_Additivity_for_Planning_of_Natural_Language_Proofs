@@ -1,0 +1,141 @@
+data_files:
+        orig_data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+        #orig_data_file: 'data/full/entailmentbank/task_1/test_tfidf_distractor_goals.jsonl'
+        #orig_data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+        #orig_data_file: 'data/full/entailmentbank/task_2/test_tfidf_distractor_goals.jsonl'
+#        orig_data_file: 'data/full/morals/moral100.json'
+
+
+
+create_shallow_graphs:
+  depth: -1
+  min_depth: -1
+  max_depth: -1
+  keep_extra_premises: true
+
+create_premise_masked_graphs:
+  premises_to_mask: 0
+
+search:
+
+  max_steps: 20
+  torch_devices: ['cuda:0']
+
+  all_one_premise: false
+  mix_distractors: true
+  shuffle_premises: true
+
+
+  step_selector:
+
+      type: 'gold_step_selector'
+      arguments:
+#        annotated_file: 'data/full/morals/moral100.json'
+        annotated_file: 'data/full/entailmentbank/task_1/test.jsonl'
+
+  step_type:
+    - type: 'deductive_step_type'
+      arguments:
+        step_model:
+          constructor_type: 'search_model'
+          type: 'step_model'
+          arguments:
+            model_name: 't5_large_pps_eb_step'
+            max_output_length: 128
+            num_return_sequences: 50
+            batch_size: 1
+
+#  step_validator:
+#    - type: 'consanguinity_threshold_step_validator'
+#      arguments:
+#        threshold: 3
+#        compare_subindex: false
+
+
+  generation_validator:
+    - type: 'contrastive_filter_validator'
+      arguments:
+        threshold: 0.9
+        embedder:
+          constructor_type: "search_model"
+          type: "node_embedder"
+          arguments:
+            model_name: "ra_eb_tau_05"
+            batch_size: 1
+#
+#    - type: 'deduplication_generation_validator'
+#      arguments:
+#        threshold: 0.9
+#        check_arguments: true
+#        check_matching_generation_type: true
+#        normalize_values: true
+#        comparison:
+#          constructor_type: 'comparison_metric'
+#          type: 'exact_comparison'
+#          arguments:
+
+
+graph_goal_comparisons:
+  torch_devices: ['cuda:0']
+  use_normalized_values: true
+  allowed_graphkeytypes: ['DEDUCTIVE']
+
+  comparison_metric:
+        constructor_type: 'comparison_metric'
+        type: 'entailment_comparison'
+        arguments:
+          entailment_method: 'group_to_target'
+          entailment_model:
+            constructor_type: 'search_model'
+            type: 'entailment_model'
+            arguments:
+              model_name: 'wanli_entailment_model'
+              batch_size: 4
+
+graph_missing_premise_comparisons:
+  torch_devices: [ 'cuda:0' ]
+  use_normalized_values: true
+  allowed_graphkeytypes: [ 'ABDUCTIVE' ]
+
+  comparison_metric:
+        constructor_type: 'comparison_metric'
+        type: 'rouge_entailment_hm_comparison'
+        arguments:
+          rouge_comparison:
+                  constructor_type: 'comparison_metric'
+                  type: 'rouge_comparison'
+                  arguments:
+                          rouge_types:
+                                - 'rouge1'
+          entailment_comparison:
+            constructor_type: 'comparison_metric'
+            type: 'entailment_comparison'
+            arguments:
+              entailment_method: 'mutual'
+              entailment_model:
+                constructor_type: 'search_model'
+                type: 'entailment_model'
+                arguments:
+                  model_name: 'wanli_entailment_model'
+                  batch_size: 4
+
+find_proofs:
+  proof_types:
+    - score_name: 'goal_score'
+      threshold: 0.81
+      graph_key_types: [ 'DEDUCTIVE' ]
+
+search_report_args:
+  basic_stats: true
+  duplicate_gen_stats: false
+  expansion_stats: true
+  premise_usage_stats: true
+  self_bleu_stats: false
+  self_bleu_weights:
+    - 0.33
+    - 0.33
+    - 0.33
+  self_rouge_stats: false
+  proof_stats: true
+  print_report: true
+  device: 'cuda:0'

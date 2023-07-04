@@ -1,0 +1,39 @@
+Example 4:
+Premise 1: All triangles have a sum of interior angles equal to 180 degrees.
+Premise 2: A figure is a triangle.
+Conclusion 1: The sum of interior angles in the figure is equal to 180 degrees.
+Premise 3 (NEGATED): All triangles do not have a sum of interior angles equal to 180 degrees.
+Premise 4 (NEGATED): The figure is not a triangle.
+Conclusion 2 (NEGATED): The sum of interior angles in the figure is not equal to 180 degrees.
+
+Example 5:
+Premise 1: All mammals have hair or fur at some point in their lives.
+Premise 2: Elephants are mammals.
+Conclusion 1: Elephants have hair or fur at some point in their lives.
+Premise 3 (NEGATED): All mammals do not have hair or fur at some point in their lives.
+Premise 4 (NEGATED): Elephants are not mammals.
+Conclusion 2 (NEGATED): Elephants do not have hair or fur at some point in their lives.
+
+Example 6:
+Premise 1: All enzymes are proteins.
+Premise 2: Amylase is an enzyme.
+Conclusion 1: Amylase is a protein.
+Premise 3 (NEGATED): All enzymes are not proteins.
+Premise 4 (NEGATED): Amylase is not an enzyme.
+Conclusion 2 (NEGATED): Amylase is not a protein.
+
+Example 7:
+Premise 1: All conductors allow the flow of electric current.
+Premise 2: Copper is a conductor.
+Conclusion 1: Copper allows the flow of electric current.
+Premise 3 (NEGATED): All conductors do not allow the flow of electric current.
+Premise 4 (NEGATED): Copper is not a conductor.
+Conclusion 2 (NEGATED): Copper does not allow the flow of electric current.
+
+Example 8:
+Premise 1: All hurricanes form over warm ocean waters.
+Premise 2: Hurricane Maria formed over the ocean.
+Conclusion 1: Hurricane Maria formed over warm ocean waters.
+Premise 3 (NEGATED): All hurricanes do not form over warm ocean waters.
+Premise 4 (NEGATED): Hurricane Maria did not form over the ocean.
+Conclusion 2 (NEGATED): Hurricane Maria did not form over warm ocean waters.

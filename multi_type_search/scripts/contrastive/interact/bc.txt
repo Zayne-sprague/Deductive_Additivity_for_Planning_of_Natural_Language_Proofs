@@ -1,0 +1,63 @@
+Example 1:
+P1: All birds have feathers.
+P2: Robins are birds.
+C1: Robins have feathers.
+C2: All birds are robins. (UNDISTRIBUTED MIDDLE)
+C3: All animals with feathers are birds. (HASTY GENERALIZATION)
+C4: Robins represent all birds. (UNREPRESENTATIVE SAMPLE)
+
+Example 2:
+P1: All mammals give birth to live young.
+P2: Dogs are mammals.
+C1: Dogs give birth to live young.
+C2: All animals that give birth to live young are dogs. (UNDISTRIBUTED MIDDLE)
+C3: All animals that give birth are mammals. (HASTY GENERALIZATION)
+C4: Dogs represent all mammals. (UNREPRESENTATIVE SAMPLE)
+
+Example 3:
+P1: All reptiles are cold-blooded.
+P2: Snakes are reptiles.
+C1: Snakes are cold-blooded.
+C2: All cold-blooded animals are snakes. (UNDISTRIBUTED MIDDLE)
+C3: All animals without fur are cold-blooded. (HASTY GENERALIZATION)
+C4: Snakes represent all reptiles. (UNREPRESENTATIVE SAMPLE)
+
+Example 4:
+P1: All flowers are angiosperms.
+P2: Roses are flowers.
+C1: Roses are angiosperms.
+C2: All angiosperms are roses. (UNDISTRIBUTED MIDDLE)
+C3: All plants with petals are flowers. (HASTY GENERALIZATION)
+C4: Roses represent all flowers. (UNREPRESENTATIVE SAMPLE)
+
+Example 5:
+P1: All fish have gills.
+P2: Goldfish are fish.
+C1: Goldfish have gills.
+C2: All animals with gills are goldfish. (UNDISTRIBUTED MIDDLE)
+C3: All animals that live in water have gills. (HASTY GENERALIZATION)
+C4: Goldfish represent all fish. (UNREPRESENTATIVE SAMPLE)
+
+Example 6:
+P1: All planets in our solar system orbit the sun.
+P2: Earth is a planet in our solar system.
+C1: Earth orbits the sun.
+C2: All celestial bodies that orbit the sun are planets. (UNDISTRIBUTED MIDDLE)
+C3: All planets in the universe orbit the sun. (HASTY GENERALIZATION)
+C4: Earth represents all planets in our solar system. (UNREPRESENTATIVE SAMPLE)
+
+Example 7:
+P1: All prime numbers are divisible only by themselves and one.
+P2: 5 is a prime number.
+C1: 5 is divisible only by itself and one.
+C2: All odd numbers are prime numbers. (UNDISTRIBUTED MIDDLE)
+C3: All numbers divisible by only two factors are prime numbers. (HASTY GENERALIZATION)
+C4: The number 5 represents all prime numbers. (UNREPRESENTATIVE SAMPLE)
+
+Example 8:
+P1: All carnivorous plants consume insects.
+P2: The pitcher plant is a carnivorous plant.
+C1: The pitcher plant consumes insects.
+C2: All plants that consume insects are pitcher plants. (UNDISTRIBUTED MIDDLE)
+C3: All plants that consume other organisms are carnivorous. (HASTY GENERALIZATION)
+C4: Pitcher plants represent all carnivorous plants. (UNREPRESENTATIVE SAMPLE)

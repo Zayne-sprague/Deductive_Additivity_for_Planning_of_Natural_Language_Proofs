@@ -1,0 +1,65 @@
+mrr_benchmark:
+#  data_file: 'data/full/morals/moral100.json'
+#  data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+  data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+  #data_file: 'full/hotpot/fullwiki_train.json'  device: 'cuda:0'
+  do_graph_goal: true
+  do_intermediate_step: true
+
+  device: 'cpu'
+
+  heuristic:
+    type: 'vector_space_step_selector'
+    arguments:
+      iter_size: 1
+      deductive_nms_threshold: 0.995
+      use_nms: false
+      similarity_metric: 'cosine'
+      model:
+        constructor_type: "search_model"
+        type: "node_embedder"
+        arguments:
+                model_name: "simcse_rbase"
+                batch_size: 1
+
+mrr_reasoning_benchmark:
+  data_file: 'data/full/reasoning_benchmarks/benchmark.csv'
+  heuristic:
+    type: 'vector_space_step_selector'
+    arguments:
+      iter_size: 1
+      deductive_nms_threshold: 0.995
+      use_nms: false
+      similarity_metric: 'cosine'
+      model:
+        constructor_type: "search_model"
+        type: "node_embedder"
+        arguments:
+          model_name: "simcse_rbase"
+          batch_size: 1
+
+rep_benchmark:
+#  data_file: 'data/full/morals/moral100.json'
+  data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+  do_annotated: true
+  do_step_model: true
+  do_model_to_annotated: true
+  do_random_args_to_annotated: true
+  do_partial_random_args_to_annotated: true
+  show_plot: true
+
+  encoder:
+      constructor_type: "search_model"
+      type: "node_embedder"
+      arguments:
+        model_name: "simcse_rbase"
+        batch_size: 1
+
+  step_model:
+    constructor_type: 'search_model'
+    type: 'step_model'
+    arguments:
+      model_name: 't5_large_pps_eb_step'
+      max_output_length: 128
+      num_return_sequences: 1
+      batch_size: 1

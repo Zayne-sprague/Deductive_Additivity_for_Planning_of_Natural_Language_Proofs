@@ -1,0 +1,91 @@
+mrr_benchmark:
+#  data_file: 'data/full/morals/moral100.json'
+#  data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+  data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+  #data_file: 'full/hotpot/fullwiki_train.json'  device: 'cuda:0'
+  do_graph_goal: true
+  do_intermediate_step: true
+  pool_premises: false
+
+  heuristic:
+      type: 'calibrator_heuristic_step_selector'
+      arguments:
+        abductive_heuristic_model:
+          constructor_type: 'search_model'
+          type: 'calibrator_heuristic'
+          arguments:
+            model_name: 'abductive_gc'
+            goal_conditioned: false
+            batch_size: 8
+
+        deductive_heuristic_model:
+          constructor_type: 'search_model'
+          type: 'calibrator_heuristic'
+          arguments:
+            model_name: 'forward_v3_gc'
+            goal_conditioned: true
+            batch_size: 8
+
+mrr_reasoning_benchmark:
+  data_file: 'data/full/reasoning_benchmarks/benchmark.csv'
+  heuristic:
+    type: 'calibrator_heuristic_step_selector'
+    arguments:
+      abductive_heuristic_model:
+        constructor_type: 'search_model'
+        type: 'calibrator_heuristic'
+        arguments:
+          model_name: 'abductive_gc'
+          goal_conditioned: false
+          batch_size: 8
+
+      deductive_heuristic_model:
+        constructor_type: 'search_model'
+        type: 'calibrator_heuristic'
+        arguments:
+          model_name: 'forward_v3_gc'
+          goal_conditioned: true
+          batch_size: 8
+
+mrr_intermediate_benchmark:
+#  data_file: 'data/full/morals/moral100.json'
+  #data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+  data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+  #data_file: 'full/hotpot/fullwiki_train.json'  device: 'cuda:0'
+
+  do_graph_goal: true
+  do_intermediate_step: true
+  ranks_per_added_generation: true
+  visualize: true
+  random_step_samples: 10
+
+  heuristic:
+      type: 'calibrator_heuristic_step_selector'
+      arguments:
+        abductive_heuristic_model:
+          constructor_type: 'search_model'
+          type: 'calibrator_heuristic'
+          arguments:
+            model_name: 'abductive_gc'
+            goal_conditioned: false
+            batch_size: 8
+
+        deductive_heuristic_model:
+          constructor_type: 'search_model'
+          type: 'calibrator_heuristic'
+          arguments:
+            model_name: 'forward_v3_gc'
+            goal_conditioned: true
+            batch_size: 8
+
+  step_type:
+      type: 'deductive_step_type'
+      arguments:
+        step_model:
+          constructor_type: 'search_model'
+          type: 'step_model'
+          arguments:
+            model_name: 't5_large_pps_eb_step'
+            max_output_length: 128
+            num_return_sequences: 5
+            batch_size: 8

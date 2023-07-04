@@ -1,0 +1,69 @@
+Example 1:
+Premise 1: All mammals are warm-blooded.
+Premise 2: Whales are mammals.
+Conclusion: Whales are warm-blooded.
+Premise 3 (FALSE PREMISE): All mammals are cold-blooded.
+Premise 4 (FALSE PREMISE): Whales are reptiles.
+
+Example 2:
+Premise 1: All carnivorous plants are autotrophic.
+Premise 2: Venus flytraps are carnivorous plants.
+Conclusion: Venus flytraps are autotrophic.
+Premise 3 (FALSE PREMISE): All carnivorous plants are heterotrophic.
+Premise 4 (FALSE PREMISE): Venus flytraps are fungi.
+
+Example 3:
+Premise 1: All prime numbers are divisible only by themselves and one.
+Premise 2: 7 is a prime number.
+Conclusion: 7 is divisible only by itself and one.
+Premise 3 (FALSE PREMISE): All prime numbers are divisible by two.
+Premise 4 (FALSE PREMISE): 7 is an even number.
+
+Example 4:
+Premise 1: All birds have feathers.
+Premise 2: Penguins are birds.
+Conclusion: Penguins have feathers.
+Premise 3 (FALSE PREMISE): All birds have fur.
+Premise 4 (FALSE PREMISE): Penguins are fish.
+
+Example 5:
+Premise 1: Photosynthesis requires sunlight.
+Premise 2: Plants perform photosynthesis.
+Conclusion: Plants require sunlight.
+Premise 3 (FALSE PREMISE): Photosynthesis does not require sunlight.
+Premise 4 (FALSE PREMISE): Plants perform chemosynthesis.
+
+Example 6:
+Premise 1: All squares have four equal sides.
+Premise 2: A quadrilateral is a square.
+Conclusion: A quadrilateral has four equal sides.
+Premise 3 (FALSE PREMISE): All squares have three equal sides.
+Premise 4 (FALSE PREMISE): A quadrilateral is a triangle.
+
+Example 7:
+Premise 1: All insects have six legs.
+Premise 2: Ants are insects.
+Conclusion: Ants have six legs.
+Premise 3 (FALSE PREMISE): All insects have eight legs.
+Premise 4 (FALSE PREMISE): Ants are arachnids.
+
+Example 8:
+Premise 1: All planets in our solar system orbit the Sun.
+Premise 2: Mars is a planet in our solar system.
+Conclusion: Mars orbits the Sun.
+Premise 3 (FALSE PREMISE): All planets in our solar system orbit the Moon.
+Premise 4 (FALSE PREMISE): Mars is a moon.
+
+Example 9:
+Premise 1: All fish lay eggs.
+Premise 2: Salmon are fish.
+Conclusion: Salmon lay eggs.
+Premise 3 (FALSE PREMISE): All fish give live birth.
+Premise 4 (FALSE PREMISE): Salmon are mammals.
+
+Example 10:
+Premise 1: All deciduous trees lose their leaves in autumn.
+Premise 2: Maple trees are deciduous trees.
+Conclusion: Maple trees lose their leaves in autumn.
+Premise 3 (FALSE PREMISE): All deciduous trees lose their leaves in spring.
+Premise 4 (FALSE PREMISE): Maple trees are evergreen trees.

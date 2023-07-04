@@ -1,0 +1,50 @@
+mrr_benchmark:
+#  data_file: 'data/full/morals/moral100.json'
+#  data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+  data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+#  data_file: 'full/hotpot/fullwiki_train.json'
+  device: 'cuda:0'
+  do_graph_goal: true
+  do_intermediate_step: true
+
+  heuristic:
+      type: 'BM25_step_selector'
+      arguments:
+        iter_size: 1
+
+mrr_reasoning_benchmark:
+  data_file: 'data/full/reasoning_benchmarks/benchmark.csv'
+  heuristic:
+    type: 'BM25_step_selector'
+    arguments:
+      iter_size: 1
+
+
+mrr_intermediate_benchmark:
+#  data_file: 'data/full/morals/moral100.json'
+  #data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+  data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+  #data_file: 'full/hotpot/fullwiki_train.json'  device: 'cuda:0'
+
+  do_graph_goal: true
+  do_intermediate_step: true
+  ranks_per_added_generation: true
+  visualize: true
+  random_step_samples: 10
+
+  heuristic:
+      type: 'BM25_step_selector'
+      arguments:
+        iter_size: 1
+
+  step_type:
+      type: 'deductive_step_type'
+      arguments:
+        step_model:
+          constructor_type: 'search_model'
+          type: 'step_model'
+          arguments:
+            model_name: 't5_large_pps_eb_step'
+            max_output_length: 128
+            num_return_sequences: 5
+            batch_size: 8

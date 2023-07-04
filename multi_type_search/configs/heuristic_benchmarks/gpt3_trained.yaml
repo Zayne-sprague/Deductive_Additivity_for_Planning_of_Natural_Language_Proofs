@@ -1,0 +1,120 @@
+mrr_benchmark:
+  data_file: 'data/full/morals/moral100.json'
+  #data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+  #data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+  #data_file: 'full/hotpot/fullwiki_train.json'  device: 'cuda:0'
+  do_graph_goal: true
+  do_intermediate_step: true
+  pool_premises: false
+
+  heuristic:
+    type: 'vector_space_step_selector'
+    arguments:
+      iter_size: 1
+      deductive_nms_threshold: 0.995
+      use_nms: false
+      similarity_metric: 'cosine'
+      trajectory_creation_method: 'add'
+      model:
+        constructor_type: "search_model"
+        type: "node_embedder"
+        arguments:
+                model_name: "projected_gpt3_glu"
+                batch_size: 1
+
+mrr_reasoning_benchmark:
+  data_file: 'data/full/reasoning_benchmarks/benchmark.csv'
+
+
+  heuristic:
+    type: 'vector_space_step_selector'
+    arguments:
+      iter_size: 1
+      deductive_nms_threshold: 0.995
+      use_nms: false
+      similarity_metric: 'cosine'
+      trajectory_creation_method: 'add'
+      model:
+        constructor_type: "search_model"
+        type: "node_embedder"
+        arguments:
+                model_name: "raw_gpt3"
+                batch_size: 1
+
+mrr_intermediate_benchmark:
+#  data_file: 'data/full/morals/moral100.json'
+  #data_file: 'data/full/entailmentbank/task_1/test.jsonl'
+  data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+  #data_file: 'full/hotpot/fullwiki_train.json'  device: 'cuda:0'
+
+  do_graph_goal: true
+  do_intermediate_step: true
+  ranks_per_added_generation: true
+  visualize: true
+  random_step_samples: 10
+
+  heuristic:
+    type: 'vector_space_step_selector'
+    arguments:
+      iter_size: 1
+      deductive_nms_threshold: 0.995
+      use_nms: false
+      similarity_metric: 'cosine'
+      weight_by_rep_score: true
+      model:
+        constructor_type: "search_model"
+        type: "node_embedder"
+        arguments:
+                model_name: ""
+                batch_size: 1
+
+  step_type:
+      type: 'deductive_step_type'
+      arguments:
+        step_model:
+          constructor_type: 'search_model'
+          type: 'step_model'
+          arguments:
+            model_name: 't5_large_pps_eb_step'
+            max_output_length: 128
+            num_return_sequences: 5
+            batch_size: 8
+
+  contrastive_validator:
+    type: 'contrastive_filter_validator'
+    arguments:
+      threshold: -1.1
+      embedder:
+        constructor_type: "search_model"
+        type: "node_embedder"
+        arguments:
+          model_name: "ra_eb_tau_05"
+          batch_size: 1
+
+
+rep_benchmark:
+  data_file: 'data/full/morals/moral100.json'
+        #data_file: 'data/full/entailmentbank/task_2/test.jsonl'
+
+  do_annotated: true
+  do_step_model: true
+  do_model_to_annotated: true
+  do_random_args_to_annotated: true
+  do_partial_random_args_to_annotated: true
+  show_plot: false
+
+  encoder:
+      constructor_type: "search_model"
+      type: "node_embedder"
+      arguments:
+        model_name: "projected_gpt3_glu"
+        batch_size: 1
+
+  step_model:
+    constructor_type: 'search_model'
+    type: 'step_model'
+    arguments:
+      model_name: 't5_large_pps_eb_step'
+      max_output_length: 128
+      num_return_sequences: 1
+      batch_size: 1

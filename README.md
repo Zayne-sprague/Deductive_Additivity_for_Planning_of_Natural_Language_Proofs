@@ -20,6 +20,7 @@ The newly introduced **Single Step Reasoning Contrast** dataset can be found in 
 3. `pip install -r requirements.txt`
 4. `python ./install.py` (expect this to take a long time based on your internet speed)
 5. `export PYTHONPATH=$PWD`
+6. (optional) For any of the GPT3 scripts, put your openai API key in the `openai_key.txt` file.
 
 Step 4 will download all the models needed to recreate the experiments from the paper as well as two small step models
 that also perform well.  (We use the smaller step models for testing/debugging and the 3billion parameter models for

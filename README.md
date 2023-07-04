@@ -19,6 +19,7 @@ The newly introduced **Single Step Reasoning Contrast** dataset can be found in 
 2. `source venv/bin/activate`
 3. `pip install -r requirements.txt`
 4. `python ./install.py` (expect this to take a long time based on your internet speed)
+5. `export PYTHONPATH=$PWD`
 
 Step 4 will download all the models needed to recreate the experiments from the paper as well as two small step models
 that also perform well.  (We use the smaller step models for testing/debugging and the 3billion parameter models for

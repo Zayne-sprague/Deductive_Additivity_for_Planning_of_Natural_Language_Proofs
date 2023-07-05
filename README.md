@@ -15,15 +15,15 @@ The newly introduced **Single Step Reasoning Contrast** dataset can be found in 
 
 ## Installation
 
-1. `virtualenv venv` we have tested with python 3.8
+1. `virtualenv venv` we have tested with Python 3.8
 2. `source venv/bin/activate`
 3. `pip install -r requirements.txt`
 4. `python ./install.py` (expect this to take a long time based on your internet speed)
 5. `export PYTHONPATH=$PWD`
-6. (optional) For any of the GPT3 scripts, put your openai API key in the `openai_key.txt` file.
+6. (optional) For any of the GPT3 scripts, put your OpenAI API key in the `openai_key.txt` file.
 
 Step 4 will download all the models needed to recreate the experiments from the paper as well as two small step models
-that also perform well.  (We use the smaller step models for testing/debugging and the 3billion parameter models for
+that also perform well.  (We use the smaller step models for testing/debugging and the 3 billion parameter models for
 experiments.)
 
 You can see all the models that can be downloaded via
@@ -40,7 +40,7 @@ All experiments should have a config file that helps specify their parameters, d
 
 The existing config files should match what was tested in the paper, bm25, gpt3_raw, gpt3_trained, scsearch, and simcse.
 
-Most experiments will have an output flag `-o` which takes in a subpath to use to store all information about the experiment.  You can find the output in `multi_type_search/output/{-o flag subpath}`.  You can specific `-f` to overwrite existing subpaths, otherwise it will fail if an existing folder is already there.
+Most experiments will have an output flag `-o` which takes in a subpath to use to store all information about the experiment.  You can find the output in `multi_type_search/output/{-o flag subpath}`.  You can use the `-f` flag to overwrite existing subpaths; otherwise it will fail if an existing folder is already there.
 
 ### Intrinsic Embedding Representations
 
@@ -60,7 +60,7 @@ Inside the config files, you can configure each of these experiments under their
 
 ### Proof Generation
 
-Go into the `multi_type_search/experiemnts` folder and run:
+Go into the `multi_type_search/experiments` folder and run:
 
 ```shell
 python search_experiment.py -cn heuristics/raw_gpt3 -en output_subpath -f -rc
@@ -92,9 +92,9 @@ There are a ton of hyperparameters that were created for training this model.  T
 
 `-vf` - the validation file path relative to your cwd.
 
-`-gcef` - A cached file of gpt3 raw embeddings for all training and validation premises and deductions (so we do not have to query them while training which is slow, and expensive)
+`-gcef` - A cached file of gpt3 raw embeddings for all training and validation premises and deductions (so we do not have to query them while training which is slow and expensive)
 
-`-gcsf` - A cached file of gpt3 raw strings matching to the embeddings file (same order).  These are created by `multi_type_search/scripts/embed_with_gpt3` (you will have to add your api key to the script).
+`-gcsf` - A cached file of gpt3 raw strings matching to the embeddings file (same order).  These are created by `multi_type_search/scripts/embed_with_gpt3` (you will have to add your API key to the script).
 
 `-tau` - temperature of the NTXENTLoss. 
 
@@ -104,7 +104,7 @@ There are a ton of hyperparameters that were created for training this model.  T
 
 `-dmv` - Do MRR validation (MRR will be reported every epoch on the validation set)
 
-`-tcm` - Trajectory creation method, we explored more than just addition there is also subtract, multiply, max_pool, min_pool, and avg_pool.
+`-tcm` - Trajectory creation method, we explored more than just addition. There are also subtract, multiply, max_pool, min_pool, and avg_pool.
 
 `-bs` - Batch size
 
@@ -112,7 +112,7 @@ There are a ton of hyperparameters that were created for training this model.  T
 
 `-gpht` - GPT3 projection head type (glu or linear, effects the activation functions)
 
-`-tplw` - Two premise loss weight.  We explored a variety of losses, we found that this one does the best solely.
+`-tplw` - Two premise loss weight.  We explored a variety of losses; we found that this one does the best solely.
 
 Many many more are in the training file.  If anyone is interested in any of the specifics, don't hesitate to reach out!
 
@@ -125,7 +125,7 @@ All experiments were performed on the following specs (some may not matter)
 - Transformers version 4.20.0 (really important for proof generation)
     - Transformers version 4.10.4 (really important for intrinsic eval)
 
-When you want to run the intrensic evaluations (MRRs etc.) use `pip install -r requirements.txt`
+When you want to run the intrinsic evaluations (MRRs etc.) use `pip install -r requirements.txt`
 
 If you want to generate proof trees use `pip install -r requirements_proof_gen_exp.txt`
 
